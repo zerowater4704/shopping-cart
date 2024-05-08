@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-function App() {
-  const [count, setCount] = useState(0)
+function Shop() {
+  const [loadedShop, setLoadedShop] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchShop() {
+      try {
+        const response = await axios.get("https://fakestoreapi.com/products/");
+        setLoadedShop(response.data); // 取得したデータを状態に設定
+      } catch (error) {
+        console.error(error);
+        setError("Failed to load data"); // エラーを状態に設定してユーザーに通知
+      }
+    }
+
+    fetchShop();
+  }, []);
+
+  // データのロード中またはエラーが発生した場合の表示を追加
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+  if (!loadedShop.length) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h1>Shop Items</h1>
+      <ul>
+        {loadedShop.map((item) => (
+          <li key={item.id}>
+            <img src={item.image} />
+            {item.title} - ${item.price}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default App
+export default Shop;
