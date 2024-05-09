@@ -1,17 +1,27 @@
+import { useContext } from "react";
+import Button from "../Ui/Button";
 import { currencyFormat } from "../util/currecyFormat";
+import CartContext from "../store/CartContext";
 
 export default function ItemList({ item }) {
+  const cartCtx = useContext(CartContext);
+
+  function handleAddCart() {
+    cartCtx.addItem({ item });
+  }
+
   return (
     <>
       <li>
         <article>
           <img src={item.image} />
           <div>
-            <p>
+            <div>
               <h2>{item.title}</h2>
               <p>{currencyFormat.format(item.price)}</p>
-            </p>
+            </div>
           </div>
+          <Button onClick={handleAddCart}>Add to Cart</Button>
         </article>
       </li>
     </>
