@@ -12,7 +12,6 @@ export default function ItemList({ item }) {
               <p>{currencyFormat.format(item.price)}</p>
             </p>
           </div>
-          <button>Add to Cart</button>
         </article>
       </li>
     </>
