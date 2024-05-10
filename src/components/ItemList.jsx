@@ -7,14 +7,14 @@ export default function ItemList({ item }) {
   const cartCtx = useContext(CartContext);
 
   function handleAddCart() {
-    cartCtx.addItem({ item });
+    cartCtx.addItem(item);
   }
 
   return (
     <>
       <li>
         <article>
-          <img src={item.image} />
+          <img src={item.image} className="w-[200px] h-[200px]" />
           <div>
             <div>
               <h2>{item.title}</h2>
