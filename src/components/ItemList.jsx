@@ -12,14 +12,16 @@ export default function ItemList({ item }) {
 
   return (
     <>
-      <li className="border-2 bg-red-300 m-2 py-4">
-        <article className="text-center">
-          <img src={item.image} className="w-[100px] h-[100px] inline" />
+      <li className="border-2  border-orange-200 m-2 py-4 overflow-hidden text-center shadow-sm">
+        <article className="h-full flex flex-col items-center justify-center">
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-[100px] h-[100px] "
+          />
           <div>
-            <div>
-              <h2 className="font-bold">{item.title}</h2>
-              <p>{currencyFormat.format(item.price)}</p>
-            </div>
+            <h2 className="font-bold">{item.title}</h2>
+            <p>{currencyFormat.format(item.price)}</p>
           </div>
           <Button onClick={handleAddCart}>Add to Cart</Button>
         </article>

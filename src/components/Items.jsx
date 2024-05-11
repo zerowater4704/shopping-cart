@@ -19,7 +19,7 @@ export default function Items() {
   return (
     <>
       <div>
-        <ul className="grid grid-cols-3 gap-4 place-items-stretch ">
+        <ul className="grid grid-cols-3 w-[90%] p-[1rem] my-[2rem] mx-auto ">
           {loadedItem.map((item) => (
             <ItemList key={item.id} item={item} />
           ))}

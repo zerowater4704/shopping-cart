@@ -16,7 +16,7 @@ export default function Modal({ children, open, onClose }) {
     <dialog
       ref={dialog}
       onClose={onClose}
-      className="w-[80%] h-[40%] border-none border-r-8"
+      className="w-[400px] border-none border-r-8"
     >
       {children}
     </dialog>,

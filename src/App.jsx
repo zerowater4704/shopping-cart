@@ -8,7 +8,7 @@ import Checkout from "./components/Checkout";
 function Shop() {
   return (
     <>
-      <main>
+      <main className="box-border ">
         <UserProgressContextProvider>
           <CartContextProvide>
             <Header />
