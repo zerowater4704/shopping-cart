@@ -8,14 +8,16 @@ import Checkout from "./components/Checkout";
 function Shop() {
   return (
     <>
-      <UserProgressContextProvider>
-        <CartContextProvide>
-          <Header />
-          <Items />
-          <Cart />
-          <Checkout />
-        </CartContextProvide>
-      </UserProgressContextProvider>
+      <main>
+        <UserProgressContextProvider>
+          <CartContextProvide>
+            <Header />
+            <Items />
+            <Cart />
+            <Checkout />
+          </CartContextProvide>
+        </UserProgressContextProvider>
+      </main>
     </>
   );
 }

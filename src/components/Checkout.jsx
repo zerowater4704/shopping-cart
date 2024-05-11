@@ -4,6 +4,7 @@ import Input from "../Ui/Input";
 import CartContext from "../store/CartContext";
 import Modal from "../Ui/Modal";
 import UserProgressContext from "../store/UserProgressContext";
+import { currencyFormat } from "../util/currecyFormat";
 
 export default function Checkout() {
   const cartCtx = useContext(CartContext);
@@ -23,7 +24,7 @@ export default function Checkout() {
       <Modal open={userCtx.progress === "checkout"}>
         <form>
           <h2>Check Out</h2>
-          <p>Total Amount : {totalItemPrice}</p>
+          <p>Total Amount : {currencyFormat.format(totalItemPrice)}</p>
           <Input title="FullName" type="text" id="name" />
           <Input title="E-Mail" type="email" id="email" />
           <Input title="Street" type="text" id="street" />
